@@ -18,8 +18,20 @@ daily-learning-hello-agnet/
 │   ├── llm_client.py     # LLM 客户端封装
 │   ├── tools.py          # 工具函数集合
 │   └── ...
-├── chapter2/              # 第二章：（待添加）
-├── chapter3/              # 第三章：（待添加）
+├── chapter2/              # 第二章：智能体发展历史
+│   ├── eliza_basic.py    # 基础版ELIZA聊天机器人
+│   ├── eliza_advanced.py # 增强版（带上下文记忆）
+│   └── ...
+├── chapter3/              # 第三章：大语言模型基础
+│   ├── ngram_demo.py     # N-gram语言模型演示
+│   ├── bpe_demo.py       # BPE分词算法演示
+│   ├── word_embedding_demo.py  # 词嵌入演示
+│   ├── prompt_engineering_lab.py # 提示工程实验室
+│   └── ...
+├── chapter4/              # 第四章：（待添加）
+├── chapter5/              # 第五章：（待添加）
+├── chapter6/              # 第六章：（待添加）
+├── chapter7/              # 第七章：（待添加）
 └── README.md             # 本文档
 ```
 
@@ -69,13 +81,83 @@ python agent_simple.py  # 简化版
 
 ---
 
+## 🎯 第二章：智能体发展历史
+
+**项目**: 增强版ELIZA聊天机器人
+
+基于符号主义时代的经典ELIZA程序,理解早期智能体的工作原理。
+
+### 核心功能
+
+- 💬 **模式匹配对话** - 基于规则的自然语言处理
+- 🧠 **上下文记忆** - 记住用户信息并进行多轮对话
+- 📝 **规则扩展** - 添加工作、学习、爱好等话题规则
+- 🔄 **代词转换** - 维持对话连贯性
+
+### 快速开始
+
+```bash
+# 进入第二章目录
+cd chapter2
+
+# 运行基础版ELIZA
+python eliza_basic.py
+
+# 运行增强版(带记忆)
+python eliza_advanced.py
+```
+
+---
+
+## 🎯 第三章：大语言模型基础
+
+**项目**: 语言模型原理与提示工程实验
+
+深入理解LLM的工作原理,从N-gram到Transformer的完整演进。
+
+### 核心内容
+
+- 📊 **N-gram语言模型** - 统计方法的基础
+- 🔤 **BPE分词算法** - 子词切分原理
+- 🎯 **词嵌入演示** - 语义空间可视化
+- 💡 **提示工程实验室** - Zero-shot vs Few-shot vs CoT对比
+
+### 快速开始
+
+```bash
+# 进入第三章目录
+cd chapter3
+
+# 安装依赖(如果需要使用本地模型)
+pip install -r requirements.txt
+
+# 运行N-gram演示
+python ngram_demo.py
+
+# 运行BPE分词演示
+python bpe_demo.py
+
+# 运行词嵌入演示
+python word_embedding_demo.py
+
+# 运行提示工程实验室(需配置API)
+python prompt_engineering_lab.py
+```
+
+### 详细文档
+
+- 📖 [第二章完整文档](./chapter2/README.md)
+- 📖 [第三章完整文档](./chapter3/README.md)
+
+---
+
 ## 📖 学习进度
 
 | 章节 | 标题 | 状态 | 完成时间 |
 |------|------|------|---------|
 | 第一章 | 初识智能体 | ✅ 已完成 | 2026-03-29 |
-| 第二章 | 智能体发展历史 | ⏳ 待完成 | - |
-| 第三章 | 智能体的核心组件 | ⏳ 待完成 | - |
+| 第二章 | 智能体发展历史 | ✅ 已完成 | 2026-03-29 |
+| 第三章 | 大语言模型基础 | ✅ 已完成 | 2026-03-29 |
 | 第四章 | 提示工程 | ⏳ 待完成 | - |
 | 第五章 | 智能体记忆机制 | ⏳ 待完成 | - |
 | 第六章 | 智能体规划能力 | ⏳ 待完成 | - |
