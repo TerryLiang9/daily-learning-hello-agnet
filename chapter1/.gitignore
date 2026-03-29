@@ -25,7 +25,6 @@ wheels/
 
 # 环境变量
 .env
-*/.env
 
 # IDE
 .vscode/
@@ -37,6 +36,3 @@ wheels/
 # OS
 .DS_Store
 Thumbs.db
-
-# Claude
-.claude/
