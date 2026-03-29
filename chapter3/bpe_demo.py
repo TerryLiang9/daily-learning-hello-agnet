@@ -12,7 +12,14 @@ BPE (Byte Pair Encoding) 分词算法演示
 
 import re
 import collections
+import sys
+import io
 from typing import Dict, List, Tuple
+
+# 修复 Windows 终端编码问题
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 
 class BPE:

@@ -13,6 +13,13 @@
 import numpy as np
 from typing import Dict, List, Tuple
 import json
+import sys
+import io
+
+# 修复 Windows 终端编码问题
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 
 class WordEmbeddingDemo:

@@ -13,7 +13,14 @@ N-gram语言模型演示
 
 import collections
 import re
+import sys
+import io
 from typing import List, Tuple, Dict
+
+# 修复 Windows 终端编码问题
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 
 class NGramModel:
@@ -58,7 +65,7 @@ class NGramModel:
         print(f"训练完成!")
         print(f"  词表大小: {len(self.vocabulary)}")
         print(f"  总Token数: {self.total_tokens}")
-        print(f"  唯一{n}-gram数: {len(self.ngram_counts)}")
+        print(f"  唯一{self.n}-gram数: {len(self.ngram_counts)}")
 
     def _tokenize(self, text: str) -> List[str]:
         """简单的分词器"""
