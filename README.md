@@ -6,9 +6,30 @@
 
 ---
 
-## 📚 项目结构
+## 📚 项目简介
 
-本仓库包含学习 DataWhale《从零开始构建智能体》教程的完整实践项目。
+本仓库包含学习 DataWhale《从零开始构建智能体》教程的完整实践项目。通过理论学习与代码实践相结合的方式，系统掌握智能体开发的核心技术。
+
+---
+
+## 🎯 学习进度
+
+| 章节 | 标题 | 状态 | 实践项目 |
+|------|------|------|---------|
+| 第一章 | 初识智能体 | ✅ 已完成 | 智能旅行助手 |
+| 第二章 | 智能体发展历史 | ✅ 已完成 | - |
+| 第三章 | 智能体的核心组件 | ✅ 已完成 | - |
+| 第四章 | 智能体经典范式构建 | ✅ 已完成 | ReAct/Plan-and-Solve/Reflection |
+| 第五章 | 基于低代码平台的智能体搭建 | ✅ 已完成 | 学习笔记 |
+| 第六章 | 框架开发实践 | ✅ 已完成 | LangGraph/AutoGen |
+| 第七章 | 构建你的Agent框架 | ✅ 已完成 | 框架设计文档 |
+| 第八章 | 记忆与检索 | ✅ 已完成 | RAG系统 |
+
+详细进度请查看 [LEARNING_PROGRESS.md](./LEARNING_PROGRESS.md)
+
+---
+
+## 📁 项目结构
 
 ```
 daily-learning-hello-agnet/
@@ -16,178 +37,143 @@ daily-learning-hello-agnet/
 │   ├── agent.py          # 完整版智能旅行助手
 │   ├── agent_simple.py   # 简化版（仅天气查询）
 │   ├── llm_client.py     # LLM 客户端封装
-│   ├── tools.py          # 工具函数集合
-│   └── ...
-├── chapter2/              # 第二章：智能体发展历史
-│   ├── eliza_basic.py    # 基础版ELIZA聊天机器人
-│   ├── eliza_advanced.py # 增强版（带上下文记忆）
-│   └── ...
-├── chapter3/              # 第三章：大语言模型基础
-│   ├── ngram_demo.py     # N-gram语言模型演示
-│   ├── bpe_demo.py       # BPE分词算法演示
-│   ├── word_embedding_demo.py  # 词嵌入演示
-│   ├── prompt_engineering_lab.py # 提示工程实验室
-│   └── ...
-├── chapter4/              # 第四章：（待添加）
-├── chapter5/              # 第五章：（待添加）
-├── chapter6/              # 第六章：（待添加）
-├── chapter7/              # 第七章：（待添加）
+│   └── tools.py          # 工具函数集合
+├── chapter4/              # 第四章：智能体经典范式构建
+│   ├── react_agent.py    # ReAct智能体实现
+│   ├── plan_solve_agent.py # Plan-and-Solve智能体
+│   ├── reflection_agent.py # Reflection智能体
+│   ├── memory.py         # 记忆模块
+│   └── tools.py          # 工具系统
+├── chapter5/              # 第五章：低代码平台学习笔记
+├── chapter6/              # 第六章：框架开发实践
+├── chapter7/              # 第七章：构建Agent框架
+├── chapter8/              # 第八章：记忆与检索
+├── LEARNING_PROGRESS.md   # 学习进度详情
 └── README.md             # 本文档
 ```
 
 ---
 
-## 🎯 第一章：初识智能体
+## 🛠️ 技术栈
 
-**项目**: 智能旅行助手
+- **Python 3.8+**
+- **OpenAI SDK** - LLM接口
+- **LangChain/LangGraph** - 框架开发
+- **sentence-transformers** - 向量嵌入
+- **numpy** - 数值计算
 
-基于 **Thought-Action-Observation** 循环的 AI 智能体实践项目，展示如何构建一个基于大语言模型（LLM）的智能体系统。
+---
 
-### 核心功能
+## 🚀 快速开始
 
-- 🌤️ **查询天气** - 实时获取任意城市的天气状况
-- 🏛️ **推荐景点** - 根据天气条件智能推荐旅游景点
-- 🤔 **自主决策** - 通过 Thought-Action-Observation 循环自主规划任务
-- 🔄 **动态调整** - 根据环境反馈灵活调整策略
-
-### 技术栈
-
-- 支持 **智谱 AI (GLM-4)**、OpenAI 等多种 LLM
-- 兼容 OpenAI SDK 的统一接口
-- 完整的配置示例和使用文档
-
-### 快速开始
+### 第一章：智能旅行助手
 
 ```bash
-# 进入第一章目录
 cd chapter1
 
 # 安装依赖
 pip install -r requirements.txt
 
-# 配置 API Keys
-cp .env.zhipu.example .env
-# 编辑 .env 填入你的智谱 API Key 和 Tavily API Key
+# 配置环境变量
+cp .env.example .env
+# 编辑 .env 填入你的 API Keys
 
-# 运行智能体
-python agent.py  # 完整版
-python agent_simple.py  # 简化版
+# 运行完整版智能体
+python agent.py
+
+# 运行简化版
+python agent_simple.py
 ```
 
-### 详细文档
-
-- 📖 [完整使用文档](./chapter1/README.md)
-- 🚀 [智谱 AI 快速配置指南](./chapter1/QUICKSTART_ZHIPU.md)
-
----
-
-## 🎯 第二章：智能体发展历史
-
-**项目**: 增强版ELIZA聊天机器人
-
-基于符号主义时代的经典ELIZA程序,理解早期智能体的工作原理。
-
-### 核心功能
-
-- 💬 **模式匹配对话** - 基于规则的自然语言处理
-- 🧠 **上下文记忆** - 记住用户信息并进行多轮对话
-- 📝 **规则扩展** - 添加工作、学习、爱好等话题规则
-- 🔄 **代词转换** - 维持对话连贯性
-
-### 快速开始
+### 第四章：经典智能体范式
 
 ```bash
-# 进入第二章目录
-cd chapter2
+cd chapter4
 
-# 运行基础版ELIZA
-python eliza_basic.py
-
-# 运行增强版(带记忆)
-python eliza_advanced.py
-```
-
----
-
-## 🎯 第三章：大语言模型基础
-
-**项目**: 语言模型原理与提示工程实验
-
-深入理解LLM的工作原理,从N-gram到Transformer的完整演进。
-
-### 核心内容
-
-- 📊 **N-gram语言模型** - 统计方法的基础
-- 🔤 **BPE分词算法** - 子词切分原理
-- 🎯 **词嵌入演示** - 语义空间可视化
-- 💡 **提示工程实验室** - Zero-shot vs Few-shot vs CoT对比
-
-### 快速开始
-
-```bash
-# 进入第三章目录
-cd chapter3
-
-# 安装依赖(如果需要使用本地模型)
+# 安装依赖
 pip install -r requirements.txt
 
-# 运行N-gram演示
-python ngram_demo.py
+# 配置环境变量（包括SerpApi密钥）
+cp .env.example .env
 
-# 运行BPE分词演示
-python bpe_demo.py
+# 运行ReAct智能体
+python react_agent.py
 
-# 运行词嵌入演示
-python word_embedding_demo.py
+# 运行Plan-and-Solve智能体
+python plan_solve_agent.py
 
-# 运行提示工程实验室(需配置API)
-python prompt_engineering_lab.py
+# 运行Reflection智能体
+python reflection_agent.py
 ```
 
-### 详细文档
+---
 
-- 📖 [第二章完整文档](./chapter2/README.md)
-- 📖 [第三章完整文档](./chapter3/README.md)
+## 💡 核心知识点
+
+### 智能体范式
+
+1. **ReAct**：思考-行动-观察循环
+   - 边想边做，动态调整
+   - 适合探索性任务
+
+2. **Plan-and-Solve**：先规划后执行
+   - 结构化分解
+   - 适合逻辑清晰的任务
+
+3. **Reflection**：自我反思与优化
+   - 迭代改进
+   - 适合高质量要求
+
+### 框架应用
+
+- **LangGraph**：状态图建模
+- **AutoGen**：多智能体协作
+- **Coze/Dify**：低代码平台
+
+### 高级技术
+
+- **RAG**：检索增强生成
+- **记忆系统**：工作记忆 + 长期记忆
+- **工具调用**：扩展智能体能力
 
 ---
 
-## 📖 学习进度
+## 📖 学习路线
 
-| 章节 | 标题 | 状态 | 完成时间 |
-|------|------|------|---------|
-| 第一章 | 初识智能体 | ✅ 已完成 | 2026-03-29 |
-| 第二章 | 智能体发展历史 | ✅ 已完成 | 2026-03-29 |
-| 第三章 | 大语言模型基础 | ✅ 已完成 | 2026-03-29 |
-| 第四章 | 提示工程 | ⏳ 待完成 | - |
-| 第五章 | 智能体记忆机制 | ⏳ 待完成 | - |
-| 第六章 | 智能体规划能力 | ⏳ 待完成 | - |
-| 第七章 | 智能体工具使用 | ⏳ 待完成 | - |
+1. **基础入门**（第1-3章）
+   - 理解智能体概念
+   - 掌握LLM调用
+   - 学习提示工程
+
+2. **核心实践**（第4章）
+   - 实现三种经典范式
+   - 工具系统设计
+   - 记忆管理
+
+3. **框架应用**（第5-7章）
+   - 低代码平台使用
+   - 主流框架实践
+   - 自研框架设计
+
+4. **高级进阶**（第8章）
+   - 向量检索
+   - RAG系统
+   - 问答系统
 
 ---
 
-## 🛠️ 技术要求
+## 🎓 学习建议
 
-- Python 3.8+
-- 大语言模型 API（智谱 AI / OpenAI / 通义千问等）
-- Tavily Search API（用于搜索功能）
-
----
-
-## 📝 使用说明
-
-每章的项目都是独立的，包含完整的代码和文档。建议按顺序学习：
-
-1. 阅读 DataWhale 教程原文
-2. 运行对应章节的代码
-3. 理解核心概念和实现原理
-4. 完成章末习题
-5. 扩展实现自己的想法
+1. **循序渐进**：按顺序学习各章节
+2. **动手实践**：运行所有示例代码
+3. **扩展思考**：在基础代码上添加功能
+4. **项目驱动**：用所学知识解决实际问题
 
 ---
 
 ## 🔗 相关资源
 
-- 📚 [DataWhale Hello-Agents 教程](https://github.com/datawhalechina/hello-agents)
+- 📚 [DataWhale Hello-Agents教程](https://github.com/datawhalechina/hello-agents)
 - 💬 [GitHub Discussions](https://github.com/datawhalechina/Hello-Agents/discussions)
 - 🎥 [视频教程](https://www.modelscope.cn/learn/6016)
 
